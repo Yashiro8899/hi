@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para sa’yo</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #0a1a2a, #0f3057, #1b4965);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #f5f5f5;
+        }
+
+        .card {
+            max-width: 720px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            animation: fadeIn 2s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        h1 {
+            text-align: center;
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            line-height: 1.8;
+            font-size: 17px;
+            margin-bottom: 18px;
+            white-space: pre-line;
+        }
+
+        .signature {
+            text-align: right;
+            margin-top: 30px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        .heart {
+            text-align: center;
+            font-size: 26px;
+            margin-top: 15px;
+            color: #5dade2; /* ASUL */
+            animation: pulse 1.5s infinite;
+        }
+
+        .tap {
+            text-align: center;
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 10px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Music -->
+    <audio id="bgm" loop preload="auto">
+        <source src="be-with-you-ridleys.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="card" onclick="playMusic()">
+        <div class="tap" id="tapText">Tap anywhere to play the song 🎧</div>
+
+        <h1>Hi…</h1>
+
+        <p>
+Hindi ko alam kung paano sisimulan ito,
+kaya sasabihin ko na lang nang dahan-dahan,
+gaya ng paraan kong pag-ingat sa’yo
+mula pa noon.
+
+Alam mo, sa bawat araw na magkausap tayo,
+may isang parte sa akin na napapangiti nang hindi ko sinasadya.
+At sa bawat ngiti mo,
+parang may liwanag na gustong pumasok sa mga bahagi ng buhay kong matagal nang madilim.
+
+Kaibigan kita,
+at totoo, mahal ko yang salitang iyan.
+Kaya matagal kong itinago ito,
+kasi baka sa pagbitaw ko ng isang salita,
+mawala ka…
+at iyon ang kinatatakutan ko.
+
+Pero kung hindi ko sasabihin ngayon,
+baka hindi ko na masabi pa kailanman.
+Kaya eto,
+hindi ko hinihingi na suklian mo,
+hindi ko hinihingi na baguhin mo ang mundo mo para sa akin.
+
+Gusto ko lang malaman mong
+matagal na kitang minamahal nang tahimik,
+maingat,
+at may pag-asang kahit papaano,
+maiintindihan mo kung bakit ang mga simpleng bagay na ginagawa mo
+ay nagiging espesyal kapag ikaw ang gumagawa.
+
+Kung mananatili tayong magkaibigan,
+salamat,
+hinding-hindi ko iyon isusugal.
+Pero kung darating ang araw na
+makita mo rin ako sa mata ng pag-ibig…
+nandito lang ako.
+Hindi nagmamadali.
+Hindi umaalis.
+
+Naninindigan lang
+sa isang simpleng katotohanan,
+masaya akong ikaw ang dahilan
+ng mga lihim na tibok ng puso ko.
+        </p>
+
+        <div class="heart">💙</div>
+
+        <div class="signature">
+            — mula sa akin
+        </div>
+    </div>
+
+    <script>
+        let hasPlayed = false;
+
+        function playMusic() {
+            if (hasPlayed) return;
+
+            const music = document.getElementById("bgm");
+            const tapText = document.getElementById("tapText");
+
+            music.muted = false;
+            music.play().catch(() => {
+                console.log("Autoplay blocked, tap again.");
+            });
+
+            tapText.style.display = "none";
+            hasPlayed = true;
+        }
+    </script>
+
+</body>
+</html>
